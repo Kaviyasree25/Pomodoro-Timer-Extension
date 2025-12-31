@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1>🍅 Pomodoro Timer</h1>
+        <label class="theme-toggle">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="theme-slider">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-icon">☀️</span>
+          </span>
+        </label>
+      </div>
+    </header>
+
+    <!-- Timer Display -->
+    <section class="timer-section">
+      <div class="timer-display">
+        <div class="timer-circle">
+          <svg class="progress-ring" width="200" height="200">
+            <circle class="progress-ring-circle" cx="100" cy="100" r="90"></circle>
+            <circle class="progress-ring-progress" cx="100" cy="100" r="90" id="progress-circle"></circle>
+          </svg>
+          <div class="timer-time">
+            <span id="timer-minutes">25</span>:<span id="timer-seconds">00</span>
+          </div>
+        </div>
+        <div class="timer-status" id="timer-status">Ready to focus</div>
+      </div>
+
+      <div class="timer-controls">
+        <button id="start-btn" class="btn btn-primary">Start</button>
+        <button id="pause-btn" class="btn btn-secondary" style="display: none;">Pause</button>
+        <button id="stop-btn" class="btn btn-secondary">Stop</button>
+      </div>
+
+      <div class="break-controls">
+        <button id="short-break-btn" class="btn btn-break">Short Break (5m)</button>
+        <button id="long-break-btn" class="btn btn-break">Long Break (15m)</button>
+      </div>
+    </section>
+
+    <!-- Task Checklist -->
+    <section class="task-section">
+      <h2>Task Checklist</h2>
+      <div class="task-input-group">
+        <input type="text" id="task-input" class="input" placeholder="Add a task item...">
+        <button id="add-task-btn" class="btn btn-small">Add</button>
+      </div>
+      <div id="task-checklist" class="task-checklist"></div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section collapsible-section">
+      <div class="section-header" id="stats-header">
+        <h2>Today's Stats</h2>
+        <button class="collapse-toggle" aria-label="Toggle stats">
+          <span class="arrow-icon">▶</span>
+        </button>
+      </div>
+      <div class="section-content" id="stats-content">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value" id="daily-pomodoros">0</div>
+            <div class="stat-label">Pomodoros</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="total-pomodoros">0</div>
+            <div class="stat-label">Total</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="focus-time">0h</div>
+            <div class="stat-label">Focus Time</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customization -->
+    <section class="settings-section collapsible-section">
+      <div class="section-header" id="customization-header">
+        <h2>Customization</h2>
+        <button class="collapse-toggle" aria-label="Toggle customization">
+          <span class="arrow-icon">▶</span>
+        </button>
+      </div>
+      <div class="section-content" id="customization-content">
+        <div class="form-group">
+          <label>Work Duration (minutes)</label>
+          <input type="number" id="work-duration" class="input" min="1" max="60" value="25">
+        </div>
+        <div class="form-group">
+          <label>Short Break (minutes)</label>
+          <input type="number" id="short-break-duration" class="input" min="1" max="30" value="5">
+        </div>
+        <div class="form-group">
+          <label>Long Break (minutes)</label>
+          <input type="number" id="long-break-duration" class="input" min="1" max="60" value="15">
+        </div>
+        <button id="save-settings-btn" class="btn btn-secondary">Save Settings</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
